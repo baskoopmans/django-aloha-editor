@@ -1,0 +1,4 @@
+*.pyc
+*.DS_Store
+*~
+django_aloha_editor.egg-info
