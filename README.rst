@@ -21,22 +21,19 @@ Installation
 
 #. Add the `aloha_editor` directory to your Python path.
 
-    Or use pip install git+git://github.com/baskoopmans/django-aloha-editor.git
+   Or use pip install git+git://github.com/baskoopmans/django-aloha-editor.git
 
 #. Add the following middleware to your project's `settings.py` file:
 
 	``'aloha_editor.middleware.AlohaEditorMiddleware',``
    
-#. Add `aloha_editor` to your `INSTALLED_APPS` setting so Django can find the
-   template files associated with Aloha Editor.
-
-   Alternatively, add the path to the aloha editor templates
-   (``'path/to/aloha_editor/templates'`` to your ``TEMPLATE_DIRS`` setting.)
+#. Add ``aloha_editor`` to your ``INSTALLED_APPS`` setting so Django can find the
+   template files and tags associated with Aloha Editor.
 
 
 Example
 =============
-
+``
 {% load aloha_editor %}
 <html>
 <head>
@@ -47,7 +44,7 @@ Example
 {% aloha_editor object.field %}
 </body>
 </html>
-
+``
 
 TODOs and BUGS
 ==============
