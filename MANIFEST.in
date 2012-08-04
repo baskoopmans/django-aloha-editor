@@ -1,5 +1,5 @@
 include AUTHORS
 include LICENSE
 include README.rst
-recursive-include fancy_admin/templates *
+recursive-include aloha_editor/templates *
 global-include *.po *.mo
