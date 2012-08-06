@@ -47,7 +47,7 @@ class AlohaEditorNode(template.Node):
 
         # check user permissions for the object
         permission_name = '%s.change_%s' % (object._meta.app_label, object._meta.module_name)
-        if request.user.has_perm(permission_name) or user.is_superuser:
+        if request.user.has_perm(permission_name) or request.user.is_superuser:
             div_id = '%s-%i-%s' % (model_name, object.id, self.variable.split('.')[-1])
             div_content = variable_ref.resolve(context)
             return '<div class="aloha_editable" style="position: relative; display: inline-block inline; overflow: hidden;" id="aloha-%s">%s</div>' % (div_id, div_content)
