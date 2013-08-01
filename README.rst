@@ -3,18 +3,16 @@ Django Aloha Editor
 ====================
 
 The Django Aloha Editor is a WYSIWYG editor for all your Django powered websites
-it works easy yust
-more details about the panel's content.
+By default it always uses the latest version of Aloha Editor http://aloha-editor.org/
 
 Dependencies
 ============
-- Aloha Editor http://aloha-editor.org/
 - simplejson
 
 How it works
 ============
-Django Aloha Editor checks the user permissons, wraps the content with a aloha editor div and
-saves the edited content with an ajax call
+Django Aloha Editor checks the user permissons, wraps the content with an aloha editor div and
+saves the edited content with an ajax call.
 
 Installation
 ============
@@ -37,8 +35,10 @@ Example
 {% load aloha_editor %}
 <html>
 <head>
+{% if user.is_authenticated %}
 {% include "aloha_editor/css.html" %}
 {% include "aloha_editor/js.html" %}
+{% endif %}
 </head>
 <body>
 {% aloha_editor object.field %}
