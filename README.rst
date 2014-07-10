@@ -19,7 +19,7 @@ Installation
 
 #. Add the `aloha_editor` directory to your Python path.
 
-   Or use pip install git+git://github.com/baskoopmans/django-aloha-editor.git
+   Or use pip install django-aloha-editor
 
 #. Add the following middleware to your project's `settings.py` file:
 
