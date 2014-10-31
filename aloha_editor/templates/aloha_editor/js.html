@@ -114,7 +114,7 @@
         Aloha.bind('aloha-editable-deactivated', function(){
 
             var request = jQuery.ajax({
-                url: "{% url aloha_editor_save_editable %}",
+                url: "{% url 'aloha_editor:save_editable' %}",
                 type: "POST",
                 data: {
                     editable_content : Aloha.activeEditable.getContents(),

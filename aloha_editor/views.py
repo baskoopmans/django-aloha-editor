@@ -1,4 +1,4 @@
-# coding: utf-8
+# encoding: utf-8
 
 import os
 
@@ -7,6 +7,7 @@ from django.db.models import get_model
 from django.http import HttpResponse
 from django.utils import simplejson
 from django.views.decorators.csrf import csrf_protect, csrf_exempt
+
 
 #@csrf_protect
 @csrf_exempt
@@ -49,5 +50,5 @@ def save_editable(request):
 
     else:
         response_dict = { 'success': False }
-        
+
     return HttpResponse(simplejson.dumps(response_dict), mimetype='application/javascript')

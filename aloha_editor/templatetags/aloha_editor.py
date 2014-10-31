@@ -1,4 +1,4 @@
-# coding: utf-8
+# encoding: utf-8
 
 from django import template
 from django.db.models import Model
@@ -18,6 +18,7 @@ def aloha_editor(parser, token):
     #   raise template.TemplateSyntaxError("%r tag's argument should not be in quotes" % tag_name)
     return AlohaEditorNode(variable)
 
+
 class AlohaEditorNode(template.Node):
 
     def __init__(self, variable):
@@ -31,7 +32,7 @@ class AlohaEditorNode(template.Node):
             variable_ref = template.Variable(self.variable)
         except IndexError:
             variable_ref = template.Variable(self.variable)
-    
+
         # Retrieve the object from the template context
         try:
             object = object_ref.resolve(context)
@@ -45,7 +46,7 @@ class AlohaEditorNode(template.Node):
         else:
             model_name = object._meta.app_label + '_' + object._meta.module_name
 
-        # check user permissions for the object
+        # Check user permissions for the object
         permission_name = '%s.change_%s' % (object._meta.app_label, object._meta.module_name)
         if request.user.has_perm(permission_name) or request.user.is_superuser:
             div_id = '%s-%i-%s' % (model_name, object.id, self.variable.split('.')[-1])
