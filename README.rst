@@ -28,6 +28,27 @@ Installation
 
 Example
 =======
+
+views.py
+--------
+
+.. code-block:: python
+
+    from django.shortcuts import render_to_response
+    from books.models import Book
+
+
+    def book_detail(request, book_id):
+        try:
+            book = Book.objects.get(pk=book_id)
+        except Book.DoesNotExist:
+            raise Http404
+        return render_to_response('book_detail.html', {'book': book})
+
+
+book_detail.html
+----------------
+
 .. code-block:: html
 
     {% load aloha_editor %}
@@ -39,7 +60,7 @@ Example
       {% endif %}
     </head>
     <body>
-      {% aloha_editor object.field %}
+      {% aloha_editor book.title %}
     </body>
     </html>
 
