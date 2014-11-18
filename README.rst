@@ -29,7 +29,8 @@ Installation
 
 Example
 =======
-.. code-block::
+.. code-block:: html
+
     {% load aloha_editor %}
     <html>
     <head>
