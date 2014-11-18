@@ -11,41 +11,41 @@ Dependencies
 
 How it works
 ============
-Django Aloha Editor checks the user permissons, wraps the content with an aloha editor div and
-saves the edited content with an ajax call.
+Django Aloha Editor checks the user permissons, wraps the content with an aloha editor <div> and
+saves the edited content with an AJAX call.
 
 Installation
 ============
 
-#. Add the `aloha_editor` directory to your Python path.
+#. pip install django-aloha-editor
 
-   Or use pip install django-aloha-editor
+#. Add the following url to your project's `urls.py` file:
 
-#. Add the following middleware to your project's `settings.py` file:
+	``url(r'^__alohaeditor__/', include('aloha_editor.urls', namespace='aloha_editor')),``
 
-	``'aloha_editor.middleware.AlohaEditorMiddleware',``
-   
 #. Add ``aloha_editor`` to your ``INSTALLED_APPS`` setting so Django can find the
-   template files and tags associated with Aloha Editor.
+   template files and template tags associated with Aloha Editor.
 
 
 Example
-=============
-``
+=======
+```
 {% load aloha_editor %}
 <html>
 <head>
 {% if user.is_authenticated %}
-{% include "aloha_editor/css.html" %}
-{% include "aloha_editor/js.html" %}
+  {% include "aloha_editor/css.html" %}
+  {% include "aloha_editor/js.html" %}
 {% endif %}
 </head>
 <body>
-{% aloha_editor object.field %}
+  {% aloha_editor object.field %}
 </body>
 </html>
-``
+```
 
 TODOs and BUGS
 ==============
+You found a bug or have a suggestion for improvement, please let me know!
+
 See: http://github.com/baskoopmans/django-aloha-editor/issues
