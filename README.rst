@@ -60,7 +60,8 @@ book_detail.html
       {% endif %}
     </head>
     <body>
-      {% aloha_editor book.title %}
+      <h1>{{ book.title }}</h1>
+      {% aloha_editor book.description %}
     </body>
     </html>
 
