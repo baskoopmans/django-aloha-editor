@@ -29,20 +29,19 @@ Installation
 
 Example
 =======
-```
-{% load aloha_editor %}
-<html>
-<head>
-{% if user.is_authenticated %}
-  {% include "aloha_editor/css.html" %}
-  {% include "aloha_editor/js.html" %}
-{% endif %}
-</head>
-<body>
-  {% aloha_editor object.field %}
-</body>
-</html>
-```
+.. code-block::
+    {% load aloha_editor %}
+    <html>
+    <head>
+      {% if user.is_authenticated %}
+        {% include "aloha_editor/css.html" %}
+        {% include "aloha_editor/js.html" %}
+      {% endif %}
+    </head>
+    <body>
+      {% aloha_editor object.field %}
+    </body>
+    </html>
 
 TODOs and BUGS
 ==============
