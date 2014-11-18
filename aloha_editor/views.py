@@ -1,11 +1,11 @@
 # encoding: utf-8
 
 import os
+import json
 
 from django.conf import settings
 from django.db.models import get_model
 from django.http import HttpResponse
-from django.utils import simplejson
 from django.views.decorators.csrf import csrf_protect, csrf_exempt
 
 
@@ -51,4 +51,4 @@ def save_editable(request):
     else:
         response_dict = { 'success': False }
 
-    return HttpResponse(simplejson.dumps(response_dict), mimetype='application/javascript')
+    return HttpResponse(json.dumps(response_dict), mimetype='application/javascript')
