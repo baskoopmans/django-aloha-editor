@@ -1,138 +1,122 @@
-
 <script type="text/javascript" src="http://cdn.aloha-editor.org/latest/lib/require.js"></script>
 <script type="text/javascript" >
-    var Aloha = window.Aloha || ( window.Aloha = {} );
-
-    Aloha.settings = {
-        locale: 'en',
-        plugins: {
-            format: {
-                config: [  'b', 'i', 'p', 'sub', 'sup', 'del', 'title', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'pre', 'removeFormat' ],
-                editables : {
-                    // no formatting allowed for title
-                    '#title'	: [ ]
-                }
-            },
-            link: {
-                editables : {
-                    // No links in the title.
-                    '#title'	: [  ]
-                }
-            },
-            list: {
-                editables : {
-                    // No lists in the title.
-                    '#title'	: [  ]
-                }
-            },
-            abbr: {
-                editables : {
-                    // No abbr in the title.
-                    '#title'	: [  ]
-                }
-            },
-            image: {
-                'fixedAspectRatio': true,
-                'maxWidth': 1024,
-                'minWidth': 10,
-                'maxHeight': 786,
-                'minHeight': 10,
-                'globalselector': '.global',
-                'ui': {
-                    'oneTab': false
-                },
-                editables : {
-                    // No images in the title.
-                    '#title'	: [  ]
-                }
-            }
-        },
-        sidebar: {
-            disabled: true
-        },
-        contentHandler: {
-            allows: {
-                elements: [
-                    'a', 'abbr', 'b', 'blockquote', 'br', 'caption', 'cite', 'code', 'col',
-                    'colgroup', 'dd', 'del', 'dl', 'dt', 'em', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
-                    'i', 'img', 'li', 'ol', 'p', 'pre', 'q', 'small', 'strike', 'strong',
-                    'sub', 'sup', 'table', 'tbody', 'td', 'tfoot', 'th', 'thead', 'tr', 'u',
-                    'ul', 'span', 'hr', 'object', 'div'
-                ],
-
-                attributes: {
-                    'a': ['href', 'title', 'id', 'class', 'target', 'data-gentics-aloha-repository', 'data-gentics-aloha-object-id'],
-                    'div': [ 'id', 'class'],
-                    'abbr': ['title'],
-                    'blockquote': ['cite'],
-                    'br': ['class'],
-                    'col': ['span', 'width'],
-                    'colgroup': ['span', 'width'],
-                    'img': ['align', 'alt', 'height', 'src', 'title', 'width', 'class'],
-                    'ol': ['start', 'type'],
-                    'q': ['cite'],
-                    'p': ['class'],
-                    'table': ['summary', 'width'],
-                    'td': ['abbr', 'axis', 'colspan', 'rowspan', 'width'],
-                    'th': ['abbr', 'axis', 'colspan', 'rowspan', 'scope', 'width'],
-                    'ul': ['type'],
-                    'span': ['class','style','lang','xml:lang']
-                },
-
-                protocols: {
-                    'a': {'href': ['ftp', 'http', 'https', 'mailto', '__relative__']},
-                    'blockquote': {'cite': ['http', 'https', '__relative__']},
-                    'img': {'src' : ['http', 'https', '__relative__']},
-                    'q': {'cite': ['http', 'https', '__relative__']}
-                }
-            }
+  var Aloha = window.Aloha || ( window.Aloha = {} );
+  Aloha.settings = {
+    locale: 'en',
+    plugins: {
+      format: {
+        config: [  'b', 'i', 'p', 'sub', 'sup', 'del', 'title', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'pre', 'removeFormat' ],
+        editables: {
+          '#title': [] // No formatting allowed for title.
         }
-    };
+      },
+      link: {
+        editables : {
+          '#title': [] // No links in the title.
+        }
+      },
+      list: {
+        editables : {
+          '#title': [] // No lists in the title.
+        }
+      },
+      abbr: {
+        editables : {
+          '#title': [] // No abbr in the title.
+        }
+      },
+      image: {
+        'fixedAspectRatio': true,
+        'maxWidth': 1024,
+        'minWidth': 10,
+        'maxHeight': 786,
+        'minHeight': 10,
+        'globalselector': '.global',
+        'ui': {
+          'oneTab': false
+        },
+        editables : {
+          '#title': [] // No images in the title.
+        }
+      }
+    },
+    sidebar: {
+      disabled: true
+    },
+    contentHandler: {
+      allows: {
+        elements: [
+          'a', 'abbr', 'b', 'blockquote', 'br', 'caption', 'cite', 'code', 'col',
+          'colgroup', 'dd', 'del', 'dl', 'dt', 'em', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+          'i', 'img', 'li', 'ol', 'p', 'pre', 'q', 'small', 'strike', 'strong',
+          'sub', 'sup', 'table', 'tbody', 'td', 'tfoot', 'th', 'thead', 'tr', 'u',
+          'ul', 'span', 'hr', 'object', 'div'
+        ],
 
+        attributes: {
+          'a': ['href', 'title', 'id', 'class', 'target', 'data-gentics-aloha-repository', 'data-gentics-aloha-object-id'],
+          'div': [ 'id', 'class'],
+          'abbr': ['title'],
+          'blockquote': ['cite'],
+          'br': ['class'],
+          'col': ['span', 'width'],
+          'colgroup': ['span', 'width'],
+          'img': ['align', 'alt', 'height', 'src', 'title', 'width', 'class'],
+          'ol': ['start', 'type'],
+          'q': ['cite'],
+          'p': ['class'],
+          'table': ['summary', 'width'],
+          'td': ['abbr', 'axis', 'colspan', 'rowspan', 'width'],
+          'th': ['abbr', 'axis', 'colspan', 'rowspan', 'scope', 'width'],
+          'ul': ['type'],
+          'span': ['class','style','lang','xml:lang']
+        },
 
+        protocols: {
+          'a': {'href': ['ftp', 'http', 'https', 'mailto', '__relative__']},
+          'blockquote': {'cite': ['http', 'https', '__relative__']},
+          'img': {'src' : ['http', 'https', '__relative__']},
+          'q': {'cite': ['http', 'https', '__relative__']}
+        }
+      }
+    }
+  };
 </script>
 <script type="text/javascript" src="http://cdn.aloha-editor.org/latest/lib/aloha.js"
-        data-aloha-plugins="common/ui,
-                            common/format,
-                            common/table,
-                            common/list,
-                            common/link,
-                            common/highlighteditables,
-                            common/undo,
-                            common/image,
-                            common/contenthandler,
-                            common/paste,
-                            common/formatlesspaste,
-                            common/commands,
-                            common/abbr"></script>
+  data-aloha-plugins="common/ui,
+    common/format,
+    common/table,
+    common/list,
+    common/link,
+    common/highlighteditables,
+    common/undo,
+    common/image,
+    common/contenthandler,
+    common/paste,
+    common/formatlesspaste,
+    common/commands,
+    common/abbr">
+</script>
 <script type="text/javascript">
-    Aloha.ready( function() {
-        Aloha.jQuery('.aloha_editable').aloha();
-       // jQuery('body').append('<div id="aloha-log-wrapper"><div id="aloha-log"></div></div>');
-
-        // save all changes after leaving an editable
-        Aloha.bind('aloha-editable-deactivated', function(){
-
-            var request = jQuery.ajax({
-                url: "{% url 'aloha_editor:save_editable' %}",
-                type: "POST",
-                data: {
-                    editable_content : Aloha.activeEditable.getContents(),
-                    editable_reference : Aloha.activeEditable.obj[0].id,
-                },
-                dataType: "html"
-            });
-
-            request.done(function(result) {
-                var result = jQuery.parseJSON(result)
-                console.log(result);
-               // jQuery("#aloha-log").html(msg).show().delay(800).fadeOut();
-            });
-
-            request.error(function(jqXHR, textStatus) {
-                alert( "Request failed: " + textStatus );
-            });
-        });
-
+  Aloha.ready( function() {
+    Aloha.jQuery('.aloha_editable').aloha();
+    // save all changes after leaving an editable
+    Aloha.bind('aloha-editable-deactivated', function(){
+      var request = jQuery.ajax({
+        url: "{% url 'aloha_editor:save_editable' %}",
+        type: "POST",
+        data: {
+          editable_content : Aloha.activeEditable.getContents(),
+          editable_reference : Aloha.activeEditable.obj[0].id,
+        },
+        dataType: "html"
+      });
+      request.done(function(result) {
+        var result = jQuery.parseJSON(result)
+      });
+      request.error(function(jqXHR, textStatus) {
+        alert( "Request failed: " + textStatus );
+      });
     });
+  });
 </script>
