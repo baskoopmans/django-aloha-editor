@@ -5,6 +5,9 @@ Django Aloha Editor
 The Django Aloha Editor is a WYSIWYG editor for all your Django powered websites
 By default it always uses the latest version of Aloha Editor http://aloha-editor.org/
 
+.. image:: docs/example.jpg
+
+
 How it works
 ============
 Django Aloha Editor checks the user permissons, wraps the content with an aloha editor <div> and
