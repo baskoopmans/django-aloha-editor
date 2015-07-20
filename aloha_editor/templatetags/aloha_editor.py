@@ -44,10 +44,13 @@ class AlohaEditorNode(template.Node):
             # Variable was not a model
             model_name = None
         else:
-            model_name = object._meta.app_label + '_' + object._meta.module_name
+            try:
+                model_name = object._meta.app_label + '_' + object._meta.model_name
+            except AttributeError:
+                model_name = object._meta.app_label + '_' + object._meta.module_name
 
         # Check user permissions for the object
-        permission_name = '%s.change_%s' % (object._meta.app_label, object._meta.module_name)
+        permission_name = '%s.change_%s' % (object._meta.app_label, object._meta.model_name)
         if request.user.has_perm(permission_name) or request.user.is_superuser:
             div_id = '%s-%i-%s' % (model_name, object.pk, self.variable.split('.')[-1])
             div_content = variable_ref.resolve(context)

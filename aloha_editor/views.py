@@ -51,4 +51,9 @@ def save_editable(request):
     else:
         response_dict = { 'success': False }
 
-    return HttpResponse(json.dumps(response_dict), mimetype='application/javascript')
+    try:
+        response = HttpResponse(json.dumps(response_dict), content_type='application/javascript')
+    except TypeError:
+        response = HttpResponse(json.dumps(response_dict), mimetype='application/javascript') 
+
+    return response
