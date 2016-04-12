@@ -1,4 +1,4 @@
-<script type="text/javascript" src="http://cdn.aloha-editor.org/latest/lib/require.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.js"></script>
 <script type="text/javascript" >
   var Aloha = window.Aloha || ( window.Aloha = {} );
   Aloha.settings = {
@@ -82,7 +82,7 @@
     }
   };
 </script>
-<script type="text/javascript" src="http://cdn.aloha-editor.org/latest/lib/aloha.js"
+<script type="text/javascript" src="http://www.alohaeditor.org/download/aloha.min.js"
   data-aloha-plugins="common/ui,
     common/format,
     common/table,
@@ -98,25 +98,32 @@
     common/abbr">
 </script>
 <script type="text/javascript">
-  Aloha.ready( function() {
-    Aloha.jQuery('.aloha_editable').aloha();
     // save all changes after leaving an editable
-    Aloha.bind('aloha-editable-deactivated', function(){
-      var request = jQuery.ajax({
-        url: "{% url 'aloha_editor:save_editable' %}",
-        type: "POST",
-        data: {
-          editable_content : Aloha.activeEditable.getContents(),
-          editable_reference : Aloha.activeEditable.obj[0].id,
-        },
-        dataType: "html"
-      });
-      request.done(function(result) {
-        var result = jQuery.parseJSON(result)
-      });
-      request.error(function(jqXHR, textStatus) {
-        alert( "Request failed: " + textStatus );
-      });
-    });
-  });
+    function middleware(event) {
+        // console.log(event);
+        if (event.type == "leave"){
+            // console.log("Saving ...");
+              var request = jQuery.ajax({
+                url: "{% url 'aloha_editor:save_editable' %}",
+                type: "POST",
+                data: {
+                  editable_content : event.editable.elem.innerHTML,
+                  editable_reference : event.editable.elem.id,
+                },
+                dataType: "html"
+              });
+              request.done(function(result) {
+                var result = jQuery.parseJSON(result)
+              });
+              request.error(function(jqXHR, textStatus) {
+                alert( "Request failed: " + textStatus );
+              });
+        }
+        return event;
+    }
+
+    // console.log($('.aloha_editable'));
+    aloha.dom.query('.aloha_editable', document).map(aloha);
+    aloha.editor.stack.unshift(middleware);
+
 </script>

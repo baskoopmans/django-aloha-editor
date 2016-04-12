@@ -2,11 +2,16 @@
 
 import os
 import json
-
 from django.conf import settings
-from django.db.models import get_model
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_protect, csrf_exempt
+
+import django
+if django.VERSION >= (1, 9, 0, ):
+    from django.apps import apps
+    get_model = apps.get_model
+else:
+    from django.db.models import get_model
 
 
 #@csrf_protect

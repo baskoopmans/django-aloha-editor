@@ -22,6 +22,8 @@ Installation
 
 	``url(r'^__alohaeditor__/', include('aloha_editor.urls', namespace='aloha_editor')),``
 
+
+
 #. Add ``aloha_editor`` to your ``INSTALLED_APPS`` setting so Django can find the
    template files and template tags associated with Aloha Editor.
 
